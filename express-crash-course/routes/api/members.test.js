@@ -10,6 +10,7 @@ app.use('/api/members', serverRoutes);
 describe('testing server routes', () => {
     it('GET / members - success', async () => {
         const { text } = await request(app).get('/api/members/');
-        expect(text.length).toBe(226);
+        const parsed = JSON.parse(text);
+        expect(parsed[0].name).toEqual('John Doe');
     })
 })
