@@ -1,0 +1,1 @@
+[{"email": "john@gmail.com", "id": 1, "name": "John Doe", "status": "active"}, {"email": "bob@gmail.com", "id": 2, "name": "Bob Williams", "status": "inactive"}, {"email": "shannon@gmail.com", "id": 3, "name": "Shannon Jackson", "status": "active"}, {"email": "jake@example.com", "id": "82bd805e-c78a-4b52-abc4-97dfc763723c", "name": "Jake Smith", "status": "active"}]
