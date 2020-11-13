@@ -2,6 +2,8 @@ const http = require('http');
 const path = require('path');
 const fs = require('fs');
 
+const Logger = require('./logger');
+
 const server = http.createServer((req, res) => {
     // if (req.url === '/') {
     //     fs.readFile(path.join(__dirname, 'public', 'index.html'), (err, content) => {
@@ -57,10 +59,17 @@ const server = http.createServer((req, res) => {
 
     // Read file
     fs.readFile(filePath, (err, content) => {
-        if(err) {
-            if(err.code === 'ENOENT') {
+        if (err) {
+            if (err.code === 'ENOENT') {
                 // Page not found
                 fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
+                    const logger = new Logger();
+                    logger.log(`${req.url} not found.`);
+                        // File append
+                        fs.appendFile(path.join(__dirname, '/log', 'logs.txt'), `${req.url} not found.\r`, (err) => {
+                            if (err) throw err;
+                            console.log('File written to...')
+                        })
                     res.writeHead(200, { 'Content-Type': 'text/html' });
                     res.end(content, 'utf8');
                 })
