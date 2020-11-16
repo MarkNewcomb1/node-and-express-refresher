@@ -66,10 +66,10 @@ const server = http.createServer((req, res) => {
                     const logger = new Logger();
                     logger.log(`${req.url} not found.`);
                         // File append
-                        fs.appendFile(path.join(__dirname, '/log', 'logs.txt'), `${req.url} not found.\r`, (err) => {
-                            if (err) throw err;
-                            console.log('File written to...')
-                        })
+                        // fs.appendFile(path.join(__dirname, '/log', 'logs.txt'), `${req.url} not found.\r`, (err) => {
+                        //     if (err) throw err;
+                        //     console.log('File written to...')
+                        // })
                     res.writeHead(200, { 'Content-Type': 'text/html' });
                     res.end(content, 'utf8');
                 })
